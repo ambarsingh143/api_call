@@ -100,7 +100,7 @@ public class SeleniumApiPostExample {
         }
 
         // Use Selenium WebDriver for web automation if necessary
-        driver.get("https://routes.traveloes.com");
+        driver.get("https://us.travomint.com/");
 
         // Example of interacting with a web element (make sure to change the element ID)
         // driver.findElement(By.id("some-element-id")).click();
