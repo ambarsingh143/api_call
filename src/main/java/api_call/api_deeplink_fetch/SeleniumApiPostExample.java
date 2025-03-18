@@ -53,6 +53,7 @@ public class SeleniumApiPostExample {
                 + "}";
         
         long startTime = System.currentTimeMillis();  // Start time for response time measurement
+        long endTime;
         
         try {
             // Create a URL object
@@ -76,6 +77,8 @@ public class SeleniumApiPostExample {
             int responseCode = connection.getResponseCode();
             System.out.println("Response Code: " + responseCode);
             String abc = "";
+            long endTimee = System.currentTimeMillis();  // End time for response time measurement
+            endTime = endTimee;
             
             // Read the response from the input stream
             if (responseCode == HttpURLConnection.HTTP_OK) { // Check if the request was successful
@@ -93,12 +96,14 @@ public class SeleniumApiPostExample {
                     if (bookingUrl != null && !bookingUrl.isEmpty()) {
                         // Use Selenium to navigate to the booking URL in the current tab
                         driver.get(bookingUrl);
-                        Thread.sleep(5000);
+                        Thread.sleep(10000);
                         JavascriptExecutor js = (JavascriptExecutor) driver;
                         js.executeScript("window.scrollBy(0, 8000)");                        
                         driver.findElement(By.name("email")).sendKeys("ambar.singh@snva.com");
                         Thread.sleep(2000);
                         driver.findElement(By.name("phonenumber")).sendKeys("7987739916");
+                        driver.findElement(By.xpath("//button[@type=\"submit\"]")).click();
+                        
                        
                         abc = bookingUrl;
 
@@ -121,7 +126,6 @@ public class SeleniumApiPostExample {
             }
 
             // Calculate the response time
-            long endTime = System.currentTimeMillis();  // End time for response time measurement
             long responseTimeMillis = endTime - startTime;   // Time taken for the response in milliseconds
             double responseTimeSeconds = responseTimeMillis / 1000.0; // divide by 1000 to convert milliseconds to seconds
             System.out.println("API Response Time: " + responseTimeSeconds + " seconds");
