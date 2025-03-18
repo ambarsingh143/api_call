@@ -170,7 +170,7 @@ public class SeleniumApiPostExample {
             // Close the connection
             connection.disconnect();
         } catch (Exception e) {
-            e.printStackTrace(); 
+            e.printStackTrace();
         }
 
     }
