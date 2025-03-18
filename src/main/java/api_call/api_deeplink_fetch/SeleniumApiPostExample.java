@@ -98,12 +98,48 @@ public class SeleniumApiPostExample {
                         driver.get(bookingUrl);
                         Thread.sleep(10000);
                         JavascriptExecutor js = (JavascriptExecutor) driver;
-                        js.executeScript("window.scrollBy(0, 8000)");                        
+                        js.executeScript("window.scrollTo(0, document.body.scrollHeight);");
+
+                        System.out.println("✅ Scrolled to the bottom!");
+
+                        // Wait for a few seconds to see the effect
+                        try {
+                            Thread.sleep(3000);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }                       
                         driver.findElement(By.name("email")).sendKeys("ambar.singh@snva.com");
                         Thread.sleep(2000);
                         driver.findElement(By.name("phonenumber")).sendKeys("7987739916");
                         driver.findElement(By.xpath("//button[@type=\"submit\"]")).click();
-                        
+                        driver.findElement(By.xpath("//input[@id=\":r2:\"]")).sendKeys("Alok");
+                        driver.findElement(By.xpath("//input[@id=\":r4:\"]")).sendKeys("Testing");
+                        driver.findElement(By.xpath("//input[@id=\":r5:\"]")).click();
+                        Thread.sleep(2000);
+                        driver.findElement(By.xpath("/html/body/div[3]/div[3]/div/div/div/div[1]/div/div[2]/div/div/div[2]/div/div[3]/button[5]")).click();
+                        js.executeScript("window.scrollBy(0, 500)");
+                        Thread.sleep(2000);
+                        driver.findElement(By.xpath("//input[@id=\":rg:\"]")).sendKeys("Ambar");
+                        driver.findElement(By.xpath("//input[@id=\":ri:\"]")).sendKeys("Testing");
+                        driver.findElement(By.xpath("//input[@id=\":rj:\"]")).click();
+                        Thread.sleep(2000);
+                        driver.findElement(By.xpath("/html/body/div[3]/div[3]/div/div/div/div[1]/div/div[2]/div/div/div[2]/div/div[3]/button[5]")).click();
+                        js.executeScript("window.scrollBy(0, 500)");
+                        Thread.sleep(2000);
+                        driver.findElement(By.xpath("//input[@id=\":ru:\"]")).sendKeys("Keshav");
+                        driver.findElement(By.xpath("//input[@id=\":r10:\"]")).sendKeys("Testing");
+                        driver.findElement(By.xpath("//input[@id=\":r11:\"]")).click();
+                        Thread.sleep(2000);
+                        driver.findElement(By.xpath("/html/body/div[3]/div[3]/div/div/div/div[1]/div/div[2]/div/div/div[2]/div/div[3]/button[5]")).click();
+                        Thread.sleep(2000);
+                        driver.findElement(By.xpath("//button[@type=\"submit\"]")).click();
+                        Thread.sleep(10000);
+                        driver.findElement(By.xpath("//button[@class=\"btn btn-siteorange done-velres next-stpinf ml-auto\"]")).click();
+                        Thread.sleep(5000);
+                        driver.findElement(By.xpath("/html/body/div[1]/div/div/div/div/div/div[1]/div[2]/div[4]/div[2]/div/div/div[2]/div/div[1]/div/div/label/span[1]")).click();
+                        driver.findElement(By.xpath("/html/body/div[1]/div/div/div/div/div/div[1]/div[2]/div[4]/div[2]/div/div/div[2]/div/div[2]/div/div/span/button")).click();
+                        Thread.sleep(5000);
+                        driver.findElement(By.xpath("/html/body/div[1]/div/div/div[1]/header/div/div/a/div/div/div[2]")).click();
                        
                         abc = bookingUrl;
 
