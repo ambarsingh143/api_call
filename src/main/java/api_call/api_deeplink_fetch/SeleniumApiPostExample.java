@@ -104,6 +104,7 @@ public class SeleniumApiPostExample {
                         // Use Selenium to navigate to the booking URL in the current tab
                         driver.get(bookingUrl);
                         Thread.sleep(10000);
+                        
                         JavascriptExecutor js = (JavascriptExecutor) driver;
                         js.executeScript("window.scrollTo(0, document.body.scrollHeight);");
 
@@ -164,21 +165,26 @@ public class SeleniumApiPostExample {
 
                     }
                 }
+
                 // Calculate the response time
                 long responseTimeMillis = endTime - startTime;   // Time taken for the response in milliseconds
                 double responseTimeSeconds = responseTimeMillis / 1000.0; // divide by 1000 to convert milliseconds to seconds
                 System.out.println("API Response Time: " + responseTimeSeconds + " seconds");
                 System.out.println("Booking URL: " + abc);
 
-                // Send email report
-                sendEmail("API is working fine! Domain: " + apiDomain + " Response Time: " + responseTimeSeconds + " seconds", 
-                    "Booking URL: " + abc);
+                // Send email report with response time included
+                sendEmail(
+                	    "API is working fine! Domain: " + apiDomain + " Response Time: " + responseTimeSeconds + " seconds", 
+                	    String.format("Response Code: %d\nAPI Domain: %s\nAPI Response Time: %.2f seconds", 
+                	                  responseCode, apiDomain, responseTimeSeconds)
+                );
             } else {
                 // If response code is not 200, show an error message
                 System.out.println("Error: API request failed with response code " + responseCode + ". API is not working.");
 
                 // Send email report about API failure
-                sendEmail("API is not working", "Response Code: " + responseCode + "\nDomain: " + apiDomain);
+                sendEmail("API is not working", 
+                        String.format("Response Code: %d\nDomain: %s", responseCode, apiDomain));
             }
 
             // Close the connection
@@ -186,7 +192,6 @@ public class SeleniumApiPostExample {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
     }
 
     // Helper method to extract booking_url from the response
