@@ -173,11 +173,13 @@ public class SeleniumApiPostExample {
                 System.out.println("Booking URL: " + abc);
 
                 // Send email report with response time included
+             // Send email report with response time included and booking URL
                 sendEmail(
-                	    "API is working fine! Domain: " + apiDomain + " Response Time: " + responseTimeSeconds + " seconds", 
-                	    String.format("Response Code: %d\nAPI Domain: %s\nAPI Response Time: %.2f seconds", 
-                	                  responseCode, apiDomain, responseTimeSeconds)
-                );
+                		 "Domain: "+ apiDomain +" - API is working fine!", 
+                    String.format("API Domain: %s\nResponse Code: %d\nAPI Response Time: %.2f seconds\nBooking URL: %s", 
+                    		 apiDomain,  responseCode, responseTimeSeconds, abc));
+
+                
             } else {
                 // If response code is not 200, show an error message
                 System.out.println("Error: API request failed with response code " + responseCode + ". API is not working.");
